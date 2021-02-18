@@ -2,6 +2,8 @@ const Worker = require('discord-rose/worker')
 const shiro = require('@jaguar_avi/shiro.gg-wrapper')
 const fetch = require('node-fetch')
 
+const color = 0xFCD5BA
+
 const worker = new Worker()
 
 fetch('https://shiro.gg/api/endpoints')
@@ -13,17 +15,9 @@ fetch('https://shiro.gg/api/endpoints')
     worker.commands
       .setPrefix('shiro')
       .middleware(async (ctx) => {
-        if (!ctx.command.image) return true
         if (ctx.command.nsfw && !ctx.channel.nsfw) throw new Error('You must be in an NSFW channel to use this command.')
 
-        const image = await shiro[ctx.command.nsfw ? 'nsfw' : 'sfw'](ctx.command.command)
-
-        ctx.embed
-          .color(0xFCD5BA)
-          .image(image)
-          .send()
-
-        return false
+        return true
       })
       .add({
         command: 'help',
@@ -47,15 +41,31 @@ fetch('https://shiro.gg/api/endpoints')
     sfw.forEach(type => {
       worker.commands.add({
         command: type,
-        image: true
+        exec: async (ctx) => {
+          worker.api.channels.typing(ctx.channel.id)
+          const image = await shiro.sfw(type)
+
+          ctx.embed
+            .color(color)
+            .image(image)
+            .send()
+        }
       })
     })
 
     nsfw.forEach(type => {
       worker.commands.add({
         command: type,
-        image: true,
-        nsfw: true
+        nsfw: true,
+        exec: async (ctx) => {
+          worker.api.channels.typing(ctx.channel.id)
+          const image = await shiro.nsfw(type)
+
+          ctx.embed
+            .color(color)
+            .image(image)
+            .send()
+        }
       })
     })
   })
