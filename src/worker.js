@@ -3,12 +3,10 @@ const shiro = require('@jaguar_avi/shiro.gg-wrapper')
 
 const worker = new Worker()
 
+const sfw = ['avatars', 'blush', 'cry', 'hug', 'kiss', 'neko', 'nom', 'pat', 'poke', 'pout', 'slap', 'smug', 'tickle', 'wallpapers']
+const nsfw = ['bondage', 'hentai', 'thighs']
+
 worker.commands
-  .options({
-    default: {
-      image: true
-    }
-  })
   .setPrefix('shiro')
   .middleware(async (ctx) => {
     if (!ctx.command.image) return true
@@ -22,58 +20,18 @@ worker.commands
 
     return false
   })
-  .add({
-    command: 'avatars'
+
+sfw.forEach(type => {
+  worker.commands.add({
+    command: type,
+    image: true
   })
-  .add({
-    command: 'blush'
-  })
-  .add({
-    command: 'cry'
-  })
-  .add({
-    command: 'hug'
-  })
-  .add({
-    command: 'kiss'
-  })
-  .add({
-    command: 'neko'
-  })
-  .add({
-    command: 'nom'
-  })
-  .add({
-    command: 'pat'
-  })
-  .add({
-    command: 'poke'
-  })
-  .add({
-    command: 'pout'
-  })
-  .add({
-    command: 'slap'
-  })
-  .add({
-    command: 'smug'
-  })
-  .add({
-    command: 'tickle'
-  })
-  .add({
-    command: 'wallpapers'
-  })
-  // nsfw
-  .add({
-    command: 'bondage',
+})
+
+nsfw.forEach(type => {
+  worker.commands.add({
+    command: type,
+    image: true,
     nsfw: true
   })
-  .add({
-    command: 'hentai',
-    nsfw: true
-  })
-  .add({
-    command: 'thighs',
-    nsfw: true
-  })
+})
