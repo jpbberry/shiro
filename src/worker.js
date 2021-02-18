@@ -40,17 +40,17 @@ worker.commands
     }
   })
 
-sfw.forEach(type => {
+for (const type of sfw) {
   worker.commands.add({
     command: type,
     image: true
   })
-})
+}
 
-nsfw.forEach(type => {
+for (const type of nsfw) {
   worker.commands.add({
     command: type,
     image: true,
     nsfw: true
   })
-})
+}
