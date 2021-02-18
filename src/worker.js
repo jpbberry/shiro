@@ -7,8 +7,8 @@ const worker = new Worker()
 fetch('https://shiro.gg/api/endpoints')
   .then(res => res.json())
   .then(({ nsfw, sfw }) => {
-    nsfw = nsfw.map(endpoint => endpoint.slice(12))
-    sfw = sfw.map(endpoint => endpoint.slice(7))
+    nsfw = nsfw.map(endpoint => endpoint.split('/')[2])
+    sfw = sfw.map(endpoint => endpoint.split('/')[1])
 
     worker.commands
       .setPrefix('shiro')
