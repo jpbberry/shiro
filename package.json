@@ -1,0 +1,26 @@
+{
+  "name": "shiro",
+  "version": "1.0.0",
+  "description": "Shiro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpbberry/shiro.git"
+  },
+  "keywords": [
+    "shiro"
+  ],
+  "author": "JPBBerry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpbberry/shiro/issues"
+  },
+  "homepage": "https://github.com/jpbberry/shiro#readme",
+  "dependencies": {
+    "@jaguar_avi/shiro.gg-wrapper": "^1.0.2",
+    "discord-rose": "0.0.13"
+  }
+}
