@@ -38,7 +38,7 @@ fetch('https://shiro.gg/api/endpoints')
         }
       })
 
-    sfw.forEach(type => {
+    for (const type of sfw) {
       worker.commands.add({
         command: type,
         exec: async (ctx) => {
@@ -51,9 +51,9 @@ fetch('https://shiro.gg/api/endpoints')
             .send()
         }
       })
-    })
+    }
 
-    nsfw.forEach(type => {
+    for (const type of nsfw) {
       worker.commands.add({
         command: type,
         nsfw: true,
@@ -67,5 +67,5 @@ fetch('https://shiro.gg/api/endpoints')
             .send()
         }
       })
-    })
+    }
   })
