@@ -21,7 +21,7 @@
   "homepage": "https://github.com/jpbberry/shiro#readme",
   "dependencies": {
     "@jaguar_avi/shiro.gg-wrapper": "^1.0.2",
-    "discord-rose": "0.0.13",
+    "discord-rose": "1.3.0",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
