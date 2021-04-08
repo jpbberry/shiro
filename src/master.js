@@ -1,4 +1,4 @@
-const Master = require('discord-rose/master')
+const { Master } = require('discord-rose')
 const config = require('../config.json')
 
 const master = new Master(require('path').resolve(__dirname, './worker.js'), {
