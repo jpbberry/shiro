@@ -1,4 +1,4 @@
-const Worker = require('discord-rose/worker')
+const { Worker } = require('discord-rose')
 const shiro = require('@jaguar_avi/shiro.gg-wrapper')
 const fetch = require('node-fetch')
 
